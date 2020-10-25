@@ -78,7 +78,7 @@ import (
 	"strings"
 	"io"
 
-	"github.com/gogo/protobuf/jsonpb"
+	"github.com/golang/protobuf/jsonpb"
 	"github.com/gogo/protobuf/proto"
 
 	"context"

@@ -122,7 +122,7 @@ import (
 	"context"
 
 	{{ if len .HTTPHelper.Methods -}}
-		"github.com/gogo/protobuf/jsonpb"
+		"github.com/golang/protobuf/jsonpb"
 	{{- end }}
 
 	"github.com/go-kit/kit/endpoint"
