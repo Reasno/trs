@@ -175,10 +175,10 @@ func parseInput() (*truss.Config, error) {
 
 	svcName = strings.ToLower(svcName)
 
-	svcDirName := svcName + "-service"
+	svcDirName := svcName
 	log.WithField("svcDirName", svcDirName).Debug()
 
-	svcPath := filepath.Join(filepath.Dir(cfg.DefPaths[0]), svcDirName)
+	svcPath := filepath.Join(filepath.Dir(filepath.Dir(cfg.DefPaths[0])), svcDirName)
 
 	if *svcPackageFlag != "" {
 		svcOut := *svcPackageFlag
