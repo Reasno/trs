@@ -4,9 +4,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/reasno/tr/cmd/_integration-tests/middlewares/middlewarestest-service/handlers"
-	svc "github.com/reasno/tr/cmd/_integration-tests/middlewares/middlewarestest-service/svc"
-	pb "github.com/reasno/tr/cmd/_integration-tests/middlewares/proto"
+	"github.com/Reasno/tr/cmd/_integration-tests/middlewares/middlewarestest-service/handlers"
+	svc "github.com/Reasno/tr/cmd/_integration-tests/middlewares/middlewarestest-service/svc"
+	pb "github.com/Reasno/tr/cmd/_integration-tests/middlewares/proto"
 )
 
 var middlewareEndpoints svc.Endpoints

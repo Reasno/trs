@@ -12,14 +12,14 @@ import (
 	"path/filepath"
 	"strings"
 
-	log "github.com/sirupsen/logrus"
 	"github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
 	"github.com/gogo/protobuf/protoc-gen-gogo/generator"
 	plugin "github.com/gogo/protobuf/protoc-gen-gogo/plugin"
 	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 
-	"github.com/reasno/tr/svcdef/svcparse"
-	"github.com/reasno/tr/truss/execprotoc"
+	"github.com/Reasno/tr/svcdef/svcparse"
+	"github.com/Reasno/tr/truss/execprotoc"
 )
 
 var gengo *generator.Generator

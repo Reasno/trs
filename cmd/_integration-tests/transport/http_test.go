@@ -15,8 +15,8 @@ import (
 	// 3d Party
 	"context"
 	// This Service
-	pb "github.com/reasno/tr/cmd/_integration-tests/transport/proto"
-	httpclient "github.com/reasno/tr/cmd/_integration-tests/transport/transportpermutations-service/svc/client/http"
+	pb "github.com/Reasno/tr/cmd/_integration-tests/transport/proto"
+	httpclient "github.com/Reasno/tr/cmd/_integration-tests/transport/transportpermutations-service/svc/client/http"
 
 	"github.com/gogo/protobuf/jsonpb"
 	"github.com/moul/http2curl"

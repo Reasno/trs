@@ -1,11 +1,13 @@
-module github.com/reasno/tr
+module github.com/Reasno/tr
 
 go 1.13
 
 require (
 	github.com/davecgh/go-spew v1.1.1
+	github.com/go-kit/kit v0.10.0 // indirect
 	github.com/gogo/protobuf v1.2.2-0.20190601103108-21df5aa0e680
 	github.com/kr/pretty v0.1.0 // indirect
+	github.com/moul/http2curl v1.0.0 // indirect
 	github.com/pkg/errors v0.8.1
 	github.com/pmezard/go-difflib v1.0.0
 	github.com/sirupsen/logrus v1.4.2

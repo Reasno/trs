@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/reasno/tr/svcdef"
-	"github.com/reasno/tr/truss/execprotoc"
+	"github.com/Reasno/tr/svcdef"
+	"github.com/Reasno/tr/truss/execprotoc"
 	"github.com/pkg/errors"
 )
 

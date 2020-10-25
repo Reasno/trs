@@ -8,14 +8,14 @@ import (
 	"io/ioutil"
 	"strings"
 
-	log "github.com/sirupsen/logrus"
 	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 
-	"github.com/reasno/tr/gengokit"
-	"github.com/reasno/tr/gengokit/handlers"
-	templFiles "github.com/reasno/tr/gengokit/template"
+	"github.com/Reasno/tr/gengokit"
+	"github.com/Reasno/tr/gengokit/handlers"
+	templFiles "github.com/Reasno/tr/gengokit/template"
 
-	"github.com/reasno/tr/svcdef"
+	"github.com/Reasno/tr/svcdef"
 )
 
 // GenerateGokit returns a gokit service generated from a service definition (svcdef),

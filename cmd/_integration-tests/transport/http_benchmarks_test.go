@@ -16,11 +16,11 @@ import (
 	// 3d Party
 	"context"
 
-	pb "github.com/reasno/tr/cmd/_integration-tests/transport/proto"
-	httpclient "github.com/reasno/tr/cmd/_integration-tests/transport/transportpermutations-service/svc/client/http"
+	pb "github.com/Reasno/tr/cmd/_integration-tests/transport/proto"
+	httpclient "github.com/Reasno/tr/cmd/_integration-tests/transport/transportpermutations-service/svc/client/http"
 
-	"github.com/reasno/tr/cmd/_integration-tests/transport/transportpermutations-service/handlers"
-	"github.com/reasno/tr/cmd/_integration-tests/transport/transportpermutations-service/svc"
+	"github.com/Reasno/tr/cmd/_integration-tests/transport/transportpermutations-service/handlers"
+	"github.com/Reasno/tr/cmd/_integration-tests/transport/transportpermutations-service/svc"
 
 	httptransport "github.com/go-kit/kit/transport/http"
 )
