@@ -6,7 +6,7 @@ import (
 
 	"context"
 
-	pb "github.com/Reasno/tr/cmd/_integration-tests/middlewares/proto"
+	pb "github.com/reasno/tr/cmd/_integration-tests/middlewares/proto"
 )
 
 func TestAlwaysWrapped(t *testing.T) {

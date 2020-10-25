@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/Reasno/tr/deftree"
+	"github.com/reasno/tr/deftree"
 )
 
 // prindent is a utility function for creating a formatted string with a given

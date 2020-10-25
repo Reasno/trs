@@ -1,4 +1,4 @@
-module github.com/Reasno/tr
+module github.com/reasno/tr
 
 go 1.13
 

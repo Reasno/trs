@@ -14,19 +14,19 @@ Whenever templates are modified, the templates must be recompiled to binary,
 this is done with:
 
 ```
-$ go generate github.com/Reasno/tr/...
+$ go generate github.com/reasno/tr/...
 ```
 
 Then to build truss and its protoc plugin to your $GOPATH/bin directory:
 
 ```
-$ go install github.com/Reasno/tr/...
+$ go install github.com/reasno/tr/...
 ```
 
 Both can be done from the Makefile in the root directory:
 
 ```
-$ cd $GOPATH/github.com/Reasno/tr
+$ cd $GOPATH/github.com/reasno/tr
 $ make
 ```
 
@@ -36,7 +36,7 @@ Before submitting a pull request always run tests that cover modified code.
 Also build truss and run truss's integration test. This can be done by
 
 ```
-$ cd $GOPATH/src/github.com/Reasno/tr
+$ cd $GOPATH/src/github.com/reasno/tr
 $ make
 $ make test
 # If the tests failed and you want to remove generated code

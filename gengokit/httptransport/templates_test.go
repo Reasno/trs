@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Reasno/tr/gengokit/gentesthelper"
+	"github.com/reasno/tr/gengokit/gentesthelper"
 )
 
 // Test that rendering certain templates will ouput the code we expect. The

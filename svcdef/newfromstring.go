@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/Reasno/tr/truss/execprotoc"
+	"github.com/reasno/tr/truss/execprotoc"
 	"github.com/pkg/errors"
 )
 

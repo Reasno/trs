@@ -14,9 +14,9 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/pkg/errors"
 
-	"github.com/Reasno/tr/gengokit"
-	"github.com/Reasno/tr/gengokit/handlers/templates"
-	"github.com/Reasno/tr/svcdef"
+	"github.com/reasno/tr/gengokit"
+	"github.com/reasno/tr/gengokit/handlers/templates"
+	"github.com/reasno/tr/svcdef"
 )
 
 // NewService is an exported func that creates a new service
