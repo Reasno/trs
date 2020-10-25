@@ -15,6 +15,7 @@ import (
 	"context"
 
 	"github.com/go-kit/kit/endpoint"
+	"{{.ImportPath -}} /handlers"
 
 	pb "{{.PBImportPath -}}"
 )
@@ -47,11 +48,11 @@ func NewEndpoints(service pb.{{.Service.Name}}Server) Endpoints {
 	// Endpoint domain.
 	var (
 	{{range $i := .Service.Methods -}}
-		{{ToLower $i.Name}}Endpoint = svc.Make{{$i.Name}}Endpoint(service)
+		{{ToLower $i.Name}}Endpoint = Make{{$i.Name}}Endpoint(service)
 	{{end}}
 	)
 
-	endpoints := svc.Endpoints{
+	endpoints := Endpoints{
 	{{range $i := .Service.Methods -}}
 		{{$i.Name}}Endpoint:    {{ToLower $i.Name}}Endpoint,
 	{{end}}
