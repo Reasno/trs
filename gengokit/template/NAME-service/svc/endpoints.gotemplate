@@ -38,6 +38,31 @@ type Endpoints struct {
 {{- end}}
 }
 
+func NewEndpoints(service pb.{{.Service.Name}}Server) Endpoints {
+	// Business domain.
+
+	// Wrap Service with middlewares. See handlers/middlewares.go
+	service = handlers.WrapService(service)
+
+	// Endpoint domain.
+	var (
+	{{range $i := .Service.Methods -}}
+		{{ToLower $i.Name}}Endpoint = svc.Make{{$i.Name}}Endpoint(service)
+	{{end}}
+	)
+
+	endpoints := svc.Endpoints{
+	{{range $i := .Service.Methods -}}
+		{{$i.Name}}Endpoint:    {{ToLower $i.Name}}Endpoint,
+	{{end}}
+	}
+
+	// Wrap selected Endpoints with middlewares. See handlers/middlewares.go
+	endpoints = handlers.WrapEndpoints(endpoints)
+
+	return endpoints
+}
+
 // Endpoints
 {{range $i := .Service.Methods}}
 	func (e Endpoints) {{$i.Name}}(ctx context.Context, in *pb.{{GoName $i.RequestType.Name}}) (*pb.{{GoName $i.ResponseType.Name}}, error) {

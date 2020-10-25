@@ -17,7 +17,7 @@ import (
 // them to outDir.
 func GeneratePBDotGo(protoPaths, gopath []string, outDir string) error {
 
-	genGoCode := "--gogofaster_out=" +
+	genGoCode := "--gofast_out=" +
 		"Mgoogle/protobuf/any.proto=github.com/gogo/protobuf/types," +
 		"Mgoogle/protobuf/duration.proto=github.com/gogo/protobuf/types," +
 		"Mgoogle/protobuf/struct.proto=github.com/gogo/protobuf/types," +
@@ -30,7 +30,7 @@ func GeneratePBDotGo(protoPaths, gopath []string, outDir string) error {
 		return errors.Wrap(err, "cannot find protoc-gen-gogo in PATH")
 	}
 
-	err = protoc(protoPaths, gopath, genGoCode)
+	err = protoc(protoPaths, gopath, genGoCode, outDir)
 	if err != nil {
 		return errors.Wrap(err, "cannot exec protoc with protoc-gen-gogo")
 	}
@@ -74,7 +74,7 @@ func getProtocOutput(protoPaths, gopath []string) ([]byte, error) {
 
 	pluginCall := "--truss-protocast_out=" + protocOutDir
 
-	err = protoc(protoPaths, gopath, pluginCall)
+	err = protoc(protoPaths, gopath, pluginCall, "")
 	if err != nil {
 		return nil, errors.Wrap(err, "protoc failed")
 	}
@@ -100,7 +100,7 @@ func getProtocOutput(protoPaths, gopath []string) ([]byte, error) {
 }
 
 // protoc executes protoc on protoPaths
-func protoc(protoPaths, gopath []string, plugin string) error {
+func protoc(protoPaths, gopath []string, plugin, outDir string) error {
 	var cmdArgs []string
 
 	cmdArgs = append(cmdArgs, "--proto_path="+filepath.Dir(protoPaths[0]))
@@ -110,6 +110,14 @@ func protoc(protoPaths, gopath []string, plugin string) error {
 	}
 
 	cmdArgs = append(cmdArgs, plugin)
+
+	cmdArgs = append(cmdArgs,
+		"--openapiv2_out=./doc",
+		"--openapiv2_opt=logtostderr=true",
+		"--validate_out",
+		"lang=go:"+outDir,
+	)
+
 	// Append each definition file path to the end of that command args
 	cmdArgs = append(cmdArgs, protoPaths...)
 
