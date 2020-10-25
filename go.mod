@@ -1,4 +1,4 @@
-module github.com/metaverse/truss
+module github.com/Reasno/tr
 
 go 1.13
 
