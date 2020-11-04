@@ -380,14 +380,22 @@ func ParseMethod(lex *SvcLexer) (*Method, error) {
 		}
 	}
 
-	tk, val = lex.GetTokenIgnoreCommentAndWhitespace()
-	if tk != CLOSE_BRACE {
-		return nil, parserErr{
-			expected: "'}' after declaration of http options marking end of rpc declarations",
-			line:     lex.GetLineNumber(),
-			val:      val + tk.String(),
+	for {
+		tk, val = lex.GetTokenIgnoreCommentAndWhitespace()
+		if tk == CLOSE_BRACE {
+			break
 		}
+		if val != "option" {
+			return nil, parserErr{
+				expected: "'}' after declaration of http options marking end of rpc declarations",
+				line:     lex.GetLineNumber(),
+				val:      val + tk.String(),
+			}
+		}
+		fastForwardTill(lex, ";")
+
 	}
+
 
 	return toret, nil
 
@@ -398,6 +406,7 @@ func ParseHttpBindings(lex *SvcLexer) ([]*HTTPBinding, error) {
 	rv := make([]*HTTPBinding, 0)
 	new_opt := &HTTPBinding{}
 
+	start:
 	tk, val := lex.GetTokenIgnoreWhitespace()
 	// If there's a comment before the declaration of a new HttpBinding, then
 	// we set that comment as the description of that HttpBinding. Since we're
@@ -425,7 +434,15 @@ func ParseHttpBindings(lex *SvcLexer) ([]*HTTPBinding, error) {
 
 	switch {
 	case val == "option":
-		err := fastForwardTill(lex, "{")
+		err := fastForwardTill(lex, "(")
+
+		tk, val := lex.GetTokenIgnoreWhitespace()
+		for val != "google" {
+			err = fastForwardTill(lex, ";")
+			goto start
+		}
+
+		err = fastForwardTill(lex, "{")
 		if err != nil {
 			return nil, err
 		}
