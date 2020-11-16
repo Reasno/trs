@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package map;
 
-import "github.com/Reasno/tr/deftree/googlethirdparty/annotations.proto";
+import "github.com/Reasno/trs/deftree/googlethirdparty/annotations.proto";
 
 service TEST {
   rpc GetMap (MapTypeRequest) returns (MapTypeResponse) {

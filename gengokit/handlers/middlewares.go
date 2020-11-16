@@ -5,8 +5,8 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/Reasno/tr/gengokit"
-	"github.com/Reasno/tr/gengokit/handlers/templates"
+	"github.com/Reasno/trs/gengokit"
+	"github.com/Reasno/trs/gengokit/handlers/templates"
 )
 
 // MiddlewaresPath is the path to the middleware gotemplate file.

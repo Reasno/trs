@@ -16,11 +16,11 @@ dependencies:
 
 # Generate go files containing the all template files in []byte form
 gobindata:
-	go generate github.com/Reasno/tr/gengokit/template
+	go generate github.com/Reasno/trs/gengokit/template
 
 # Install truss
 truss: gobindata
-	go install -ldflags '-X "main.version=$(SHA)" -X "main.date=$(VERSION_DATE)"' github.com/Reasno/tr/cmd/tr
+	go install -ldflags '-X "main.version=$(SHA)" -X "main.date=$(VERSION_DATE)"' github.com/Reasno/trs/cmd/tr
 
 # Run the go tests and the truss integration tests
 test: test-go test-integration

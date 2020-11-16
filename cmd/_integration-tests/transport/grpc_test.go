@@ -8,8 +8,8 @@ import (
 	"context"
 	"google.golang.org/grpc"
 
-	pb "github.com/Reasno/tr/cmd/_integration-tests/transport/proto"
-	grpcclient "github.com/Reasno/tr/cmd/_integration-tests/transport/transportpermutations-service/svc/client/grpc"
+	pb "github.com/Reasno/trs/cmd/_integration-tests/transport/proto"
+	grpcclient "github.com/Reasno/trs/cmd/_integration-tests/transport/transportpermutations-service/svc/client/grpc"
 )
 
 var grpcAddr string

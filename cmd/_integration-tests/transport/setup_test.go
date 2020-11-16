@@ -11,9 +11,9 @@ import (
 
 	"google.golang.org/grpc"
 
-	pb "github.com/Reasno/tr/cmd/_integration-tests/transport/proto"
-	handler "github.com/Reasno/tr/cmd/_integration-tests/transport/transportpermutations-service/handlers"
-	svc "github.com/Reasno/tr/cmd/_integration-tests/transport/transportpermutations-service/svc"
+	pb "github.com/Reasno/trs/cmd/_integration-tests/transport/proto"
+	handler "github.com/Reasno/trs/cmd/_integration-tests/transport/transportpermutations-service/handlers"
+	svc "github.com/Reasno/trs/cmd/_integration-tests/transport/transportpermutations-service/svc"
 )
 
 func TestMain(m *testing.M) {

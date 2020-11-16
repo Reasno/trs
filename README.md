@@ -1,4 +1,4 @@
-# Truss ![Build Status](https://github.com/Reasno/tr/workflows/Go/badge.svg?branch=master)
+# Truss ![Build Status](https://github.com/Reasno/trs/workflows/Go/badge.svg?branch=master)
 
 Truss handles the painful parts of services, freeing you to focus on the
 business logic.
@@ -19,15 +19,15 @@ Otherwise [install from source.](https://github.com/google/protobuf)
 1. Install Truss with
 
 	```
-	go get -u -d github.com/Reasno/tr
-	cd $GOPATH/src/github.com/Reasno/tr
+	go get -u -d github.com/Reasno/trs
+	cd $GOPATH/src/github.com/Reasno/trs
 	make dependencies
 	make
 	```
 	On Windows, do the following instead:
 	```
-	go get -u -d github.com/Reasno/tr
-	cd %GOPATH%/src/github.com/Reasno/tr
+	go get -u -d github.com/Reasno/trs
+	cd %GOPATH%/src/github.com/Reasno/trs
 	wininstall.bat
 	```
 
