@@ -20,7 +20,7 @@ gobindata:
 
 # Install truss
 truss: gobindata
-	go install -ldflags '-X "main.version=$(SHA)" -X "main.date=$(VERSION_DATE)"' github.com/Reasno/trs/cmd/tr
+	go install -ldflags '-X "main.version=$(SHA)" -X "main.date=$(VERSION_DATE)"' github.com/Reasno/trs/cmd/trs
 
 # Run the go tests and the truss integration tests
 test: test-go test-integration
