@@ -113,7 +113,7 @@ func protoc(protoPaths, gopath []string, plugin, outDir string) error {
 
 	cmdArgs = append(cmdArgs,
 		"--openapiv2_out=./doc",
-		"--openapiv2_opt=logtostderr=true,json_names_for_fields=false",
+		"--openapiv2_opt=logtostderr=true,json_names_for_fields=false,disable_default_errors=true",
 		"--validate_out",
 		"lang=go:"+outDir,
 	)
