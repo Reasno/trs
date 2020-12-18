@@ -189,7 +189,7 @@ func (h httpError) Headers() http.Header {
 // the response as JSON to the response writer. Primarily useful in a server.
 func EncodeHTTPGenericResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {
 	marshaller := jsonpb.Marshaler{
-		EmitDefaults: false,
+		EmitDefaults: true,
 		OrigName: true,
 	}
 
