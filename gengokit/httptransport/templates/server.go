@@ -63,7 +63,7 @@ var ServerTemplate = `
 // Version: {{.Version}}
 // Version Date: {{.VersionDate}}
 
-package svc
+package gen
 
 // This file provides server-side bindings for the HTTP transport.
 // It utilizes the transport/http.Server.
@@ -86,6 +86,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
 	httptransport "github.com/go-kit/kit/transport/http"
+	"github.com/DoNewsCode/std/pkg/contract"
 
 	// This service
 	pb "{{.PBImportPath -}}"
@@ -210,8 +211,8 @@ func headersToContext(ctx context.Context, r *http.Request) context.Context {
 
 	// Tune specific change.
 	// also add the request url
-	ctx = context.WithValue(ctx, "request-url", r.URL.Path)
-	ctx = context.WithValue(ctx, "transport", "HTTPJSON")
+	ctx = context.WithValue(ctx, contract.RequestUrlKey, r.URL.Path)
+	ctx = context.WithValue(ctx, contract.TransportKey, "HTTPJSON")
 
 	return ctx
 }

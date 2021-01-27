@@ -3,7 +3,7 @@
 // Version: {{.Version}}
 // Version Date: {{.VersionDate}}
 
-package svc
+package gen
 
 // This file provides server-side bindings for the gRPC transport.
 // It utilizes the transport/grpc.Server.
@@ -15,6 +15,7 @@ import (
 	"google.golang.org/grpc/metadata"
 
 	grpctransport "github.com/go-kit/kit/transport/grpc"
+	"github.com/DoNewsCode/std/pkg/contract"
 
 	// This Service
 	pb "{{.PBImportPath -}}"
@@ -90,5 +91,7 @@ func metadataToContext(ctx context.Context, md metadata.MD) context.Context {
 		}
 	}
 
+  ctx = context.WithValue(ctx, contract.RequestUrlKey, md.Get(":path")[0])
+  ctx = context.WithValue(ctx, contract.TransportKey, "GPRCPROTOBUF")
 	return ctx
 }

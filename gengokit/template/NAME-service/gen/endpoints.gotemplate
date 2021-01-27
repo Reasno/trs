@@ -3,7 +3,7 @@
 // Version: {{.Version}}
 // Version Date: {{.VersionDate}}
 
-package svc
+package gen
 
 // This file contains methods to make individual endpoints from services,
 // request and response types to serve those endpoints, as well as encoders and

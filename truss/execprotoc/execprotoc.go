@@ -11,6 +11,12 @@ import (
 	"github.com/gogo/protobuf/proto"
 	plugin "github.com/gogo/protobuf/protoc-gen-gogo/plugin"
 	"github.com/pkg/errors"
+	flag "github.com/spf13/pflag"
+)
+
+var (
+	docPath = flag.String("doc", "", "the doc path of the project")
+	libPath = flag.String("lib", "", "The proto path of the project")
 )
 
 // GeneratePBDotGo creates .pb.go files from the passed protoPaths and writes
@@ -104,6 +110,7 @@ func protoc(protoPaths, gopath []string, plugin, outDir string) error {
 	var cmdArgs []string
 
 	cmdArgs = append(cmdArgs, "--proto_path="+filepath.Dir(protoPaths[0]))
+	cmdArgs = append(cmdArgs, "--proto_path="+*libPath)
 
 	for _, gp := range gopath {
 		cmdArgs = append(cmdArgs, "-I"+filepath.Join(gp, "src"))
@@ -112,7 +119,7 @@ func protoc(protoPaths, gopath []string, plugin, outDir string) error {
 	cmdArgs = append(cmdArgs, plugin)
 
 	cmdArgs = append(cmdArgs,
-		"--openapiv2_out=./doc",
+		"--openapiv2_out="+*docPath,
 		"--openapiv2_opt=logtostderr=true,json_names_for_fields=false,disable_default_errors=true",
 		"--validate_out",
 		"lang=go:"+outDir,

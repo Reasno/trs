@@ -12,7 +12,7 @@ const HandlerMethods = `
 `
 
 const Handlers = `
-package handlers
+package {{ToLower .Service.Name}}
 
 import (
 	"context"
@@ -22,14 +22,14 @@ import (
 
 // NewService returns a naïve, stateless implementation of Service.
 func NewService() pb.{{GoName .Service.Name}}Server {
-	return {{ToLower .Service.Name}}Service{}
+	return Service{}
 }
 
-type {{ToLower .Service.Name}}Service struct{}
+type Service struct{}
 
 {{with $te := . }}
 	{{range $i := $te.Service.Methods}}
-		func (s {{ToLower $te.Service.Name}}Service) {{$i.Name}}(ctx context.Context, in *pb.{{GoName $i.RequestType.Name}}) (*pb.{{GoName $i.ResponseType.Name}}, error){
+		func (s Service) {{$i.Name}}(ctx context.Context, in *pb.{{GoName $i.RequestType.Name}}) (*pb.{{GoName $i.ResponseType.Name}}, error){
 			var resp pb.{{GoName $i.ResponseType.Name}}
 			return &resp, nil
 		}
