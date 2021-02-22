@@ -16,7 +16,7 @@ import (
 	grpctransport "github.com/go-kit/kit/transport/grpc"
 
 	// This Service
-	"{{.ImportPath -}} /svc"
+	svc "{{.ImportPath -}} /gen"
 	pb "{{.PBImportPath -}}"
 )
 

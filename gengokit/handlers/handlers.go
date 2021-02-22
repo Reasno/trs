@@ -229,7 +229,7 @@ func isValidFunc(f *ast.FuncDecl, m methodMap, svcName string) bool {
 	}
 
 	rName := recvTypeToString(f.Recv)
-	if rName != svcName+"Service" {
+	if rName != "Service" {
 		log.WithField("Func", name).WithField("Receiver", rName).
 			Info("Func is exported with improper receiver; removing")
 		return false

@@ -86,7 +86,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
 	httptransport "github.com/go-kit/kit/transport/http"
-	"github.com/DoNewsCode/std/pkg/contract"
+	"github.com/DoNewsCode/core/contract"
 
 	// This service
 	pb "{{.PBImportPath -}}"

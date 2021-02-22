@@ -130,7 +130,7 @@ import (
 	"github.com/pkg/errors"
 
 	// This Service
-	"{{.ImportPath -}} /svc"
+	svc "{{.ImportPath -}} /gen"
 	pb "{{.PBImportPath -}}"
 )
 
@@ -261,6 +261,7 @@ func errorDecoder(buf []byte) error {
 }
 
 type errorWrapper struct {
-	Error string ` + "`" + `json:"error"` + "`" + `
+	Code uint ` + "`" + `json:"code"` + "`" + `
+	Error string ` + "`" + `json:"message"` + "`" + `
 }
 `
