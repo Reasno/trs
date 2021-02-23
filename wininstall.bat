@@ -33,6 +33,19 @@ go get -u github.com/gogo/protobuf/proto@21df5aa0e680850681b8643f0024f92d3b09930
 :: go get github.com/jteeuwen/go-bindata/...
 go get -u github.com/kevinburke/go-bindata/go-bindata
 
+:: go get  github.com/grpc-ecosystem/grpc-gateway/v2/...
+go get -u github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway
+go get -u github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2
+
+:: go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
+go get -u google.golang.org/grpc/cmd/protoc-gen-go-grpc
+
+:: go get google.golang.org/protobuf/cmd/protoc-gen-go
+go get -u google.golang.org/protobuf/cmd/protoc-gen-go
+
+:: go get github.com/envoyproxy/protoc-gen-validate
+go get -u github.com/envoyproxy/protoc-gen-validate
+
 go generate github.com/Reasno/trs/gengokit/template
 go install -ldflags "-X 'main.version=%SHA%' -X 'main.date=%HEAD_DATE%'" github.com/Reasno/trs/cmd/tr
 @ECHO OFF

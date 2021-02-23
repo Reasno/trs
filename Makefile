@@ -12,6 +12,12 @@ dependencies:
 	go get -u github.com/gogo/protobuf/protoc-gen-gogo@21df5aa0e680850681b8643f0024f92d3b09930c
 	go get -u github.com/gogo/protobuf/protoc-gen-gogofaster@21df5aa0e680850681b8643f0024f92d3b09930c
 	go get -u github.com/gogo/protobuf/proto@21df5aa0e680850681b8643f0024f92d3b09930c
+	go get -u github.com/gogo/protobuf/protoc-gen-gofast
+	go get -u github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway
+	go get -u github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2
+	go get -u google.golang.org/grpc/cmd/protoc-gen-go-grpc
+	go get -u google.golang.org/protobuf/cmd/protoc-gen-go
+	go get -u github.com/envoyproxy/protoc-gen-validate
 	go get -u github.com/kevinburke/go-bindata/go-bindata
 
 # Generate go files containing the all template files in []byte form
