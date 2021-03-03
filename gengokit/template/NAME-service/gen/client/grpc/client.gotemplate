@@ -9,8 +9,6 @@ package grpc
 import (
 	"context"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/metadata"
-	"github.com/pkg/errors"
 
 	"github.com/go-kit/kit/endpoint"
 	grpctransport "github.com/go-kit/kit/transport/grpc"
@@ -22,20 +20,8 @@ import (
 
 // New returns an service backed by a gRPC client connection. It is the
 // responsibility of the caller to dial, and later close, the connection.
-func New(conn *grpc.ClientConn, options ...ClientOption) (pb.{{.Service.Name}}Server, error) {
-	var cc clientConfig
+func New(conn *grpc.ClientConn, options ...grpctransport.ClientOption) (svc.Endpoints, error) {
 
-	for _, f := range options {
-		err := f(&cc)
-		if err != nil {
-			return nil, errors.Wrap(err, "cannot apply option")
-		}
-	}
-
-	clientOptions := []grpctransport.ClientOption{
-		grpctransport.ClientBefore(
-			contextValuesToGRPCMetadata(cc.headers)),
-	}
 	{{- with $te := .}}
 		{{- with $pkgName := $te.PackageName}}
 			{{- range $i := $te.Service.Methods}}
@@ -48,7 +34,7 @@ func New(conn *grpc.ClientConn, options ...ClientOption) (pb.{{.Service.Name}}Se
 						EncodeGRPC{{$i.Name}}Request,
 						DecodeGRPC{{$i.Name}}Response,
 						pb.{{GoName $i.ResponseType.Name}}{},
-						clientOptions...,
+						options...,
 					).Endpoint()
 				}
 			{{end}}
@@ -82,34 +68,3 @@ func EncodeGRPC{{$i.Name}}Request(_ context.Context, request interface{}) (inter
 }
 {{end}}
 
-
-type clientConfig struct {
-	headers []string
-}
-
-// ClientOption is a function that modifies the client config
-type ClientOption func(*clientConfig) error
-
-func CtxValuesToSend(keys ...string) ClientOption {
-	return func(o *clientConfig) error {
-		o.headers = keys
-		return nil
-	}
-}
-
-func contextValuesToGRPCMetadata(keys []string) grpctransport.ClientRequestFunc {
-	return func(ctx context.Context, md *metadata.MD) context.Context {
-		var pairs []string
-		for _, k := range keys {
-			if v, ok := ctx.Value(k).(string); ok {
-				pairs = append(pairs, k, v)
-			}
-		}
-
-		if pairs != nil {
-			*md = metadata.Join(*md, metadata.Pairs(pairs...))
-		}
-
-		return ctx
-	}
-}
