@@ -1,8 +1,10 @@
 package svcdef
 
 import (
+	"bytes"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"regexp"
 	"strings"
 
@@ -38,7 +40,13 @@ func isEOF(err error) bool {
 // type of each parameter.
 func consolidateHTTP(sd *Svcdef, protoFiles map[string]io.Reader) error {
 	for _, pfile := range protoFiles {
-		lex := svcparse.NewSvcLexer(pfile)
+		f, _ := ioutil.ReadAll(pfile)
+		submatch := regexp.MustCompile("package ([^;]*);").FindSubmatch(f)
+		if len(submatch) < 2 {
+			return errors.New("missing package name")
+		}
+		sd.PbPkgName = string(submatch[1])
+		lex := svcparse.NewSvcLexer(bytes.NewReader(f))
 		protosvc, err := svcparse.ParseService(lex)
 		if err != nil {
 			if isOptionalError(err) {

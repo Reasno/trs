@@ -35,9 +35,10 @@ type Svcdef struct {
 	// Go file contained "package authz", then PkgName will be "authz". If
 	// multiple Go files are analyzed, it will be the package name of the last
 	// go file analyzed.
-	PkgName  string
-	Messages []*Message
-	Enums    []*Enum
+	PkgName   string
+	PbPkgName string
+	Messages  []*Message
+	Enums     []*Enum
 	// Service contains the sole service for this Svcdef
 	Service *Service
 }
