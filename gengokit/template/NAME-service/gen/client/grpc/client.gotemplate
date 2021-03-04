@@ -23,7 +23,7 @@ import (
 func New(conn *grpc.ClientConn, options ...grpctransport.ClientOption) (svc.Endpoints, error) {
 
 	{{- with $te := .}}
-		{{- with $pkgName := $te.PackageName}}
+		{{- with $pkgName := $te.PbPackageName}}
 			{{- range $i := $te.Service.Methods}}
 				var {{ToLower $i.Name}}Endpoint endpoint.Endpoint
 				{
