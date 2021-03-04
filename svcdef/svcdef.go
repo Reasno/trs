@@ -36,7 +36,7 @@ type Svcdef struct {
 	// multiple Go files are analyzed, it will be the package name of the last
 	// go file analyzed.
 	PkgName   string
-	PbPkgName string
+	PBPkgName string
 	Messages  []*Message
 	Enums     []*Enum
 	// Service contains the sole service for this Svcdef
