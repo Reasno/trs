@@ -41,11 +41,11 @@ func isEOF(err error) bool {
 func consolidateHTTP(sd *Svcdef, protoFiles map[string]io.Reader) error {
 	for _, pfile := range protoFiles {
 		f, _ := ioutil.ReadAll(pfile)
-		submatch := regexp.MustCompile("package ([^;]*);").FindSubmatch(f)
+		submatch := regexp.MustCompile("[^\\w_]package ([^;]*);").FindSubmatch(f)
 		if len(submatch) < 2 {
 			return errors.New("missing package name")
 		}
-		sd.PbPkgName = string(submatch[1])
+		sd.PBPkgName = string(submatch[1])
 		lex := svcparse.NewSvcLexer(bytes.NewReader(f))
 		protosvc, err := svcparse.ParseService(lex)
 		if err != nil {

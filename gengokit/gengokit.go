@@ -42,6 +42,8 @@ type Data struct {
 	PBImportPath string
 	// PackageName is the name of the package containing the service definition
 	PackageName string
+
+	PBPackageName string
 	// GRPC/Protobuff service, with all parameters and return values accessible
 	Service *svcdef.Service
 	// A helper struct for generating http transport functionality.
@@ -54,14 +56,15 @@ type Data struct {
 
 func NewData(sd *svcdef.Svcdef, conf Config) (*Data, error) {
 	return &Data{
-		ImportPath:   conf.GoPackage,
-		PBImportPath: conf.PBPackage,
-		PackageName:  sd.PkgName,
-		Service:      sd.Service,
-		HTTPHelper:   httptransport.NewHelper(sd.Service),
-		FuncMap:      FuncMap,
-		Version:      conf.Version,
-		VersionDate:  conf.VersionDate,
+		ImportPath:    conf.GoPackage,
+		PBImportPath:  conf.PBPackage,
+		PackageName:   sd.PkgName,
+		PBPackageName: sd.PBPkgName,
+		Service:       sd.Service,
+		HTTPHelper:    httptransport.NewHelper(sd.Service),
+		FuncMap:       FuncMap,
+		Version:       conf.Version,
+		VersionDate:   conf.VersionDate,
 	}, nil
 }
 
