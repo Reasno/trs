@@ -15,7 +15,6 @@ import (
 	"google.golang.org/grpc/metadata"
 
 	grpctransport "github.com/go-kit/kit/transport/grpc"
-	"github.com/DoNewsCode/core/contract"
 
 	// This Service
 	pb "{{.PBImportPath -}}"
@@ -91,7 +90,5 @@ func metadataToContext(ctx context.Context, md metadata.MD) context.Context {
 		}
 	}
 
-  ctx = context.WithValue(ctx, contract.RequestUrlKey, md.Get(":path")[0])
-  ctx = context.WithValue(ctx, contract.TransportKey, "GPRCPROTOBUF")
 	return ctx
 }

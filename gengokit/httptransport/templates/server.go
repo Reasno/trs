@@ -86,7 +86,6 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
 	httptransport "github.com/go-kit/kit/transport/http"
-	"github.com/DoNewsCode/core/contract"
 
 	// This service
 	pb "{{.PBImportPath -}}"
@@ -208,11 +207,6 @@ func headersToContext(ctx context.Context, r *http.Request) context.Context {
 		ctx = context.WithValue(ctx, k, r.Header.Get(k))
 		ctx = context.WithValue(ctx, strings.ToLower(k), r.Header.Get(k))
 	}
-
-	// Tune specific change.
-	// also add the request url
-	ctx = context.WithValue(ctx, contract.RequestUrlKey, r.URL.Path)
-	ctx = context.WithValue(ctx, contract.TransportKey, "HTTPJSON")
 
 	return ctx
 }
