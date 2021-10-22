@@ -115,7 +115,7 @@ func protoc(protoPaths, gopath []string, plugin, outDir string) error {
 		"--openapiv2_out=./doc",
 		"--openapiv2_opt=logtostderr=true,json_names_for_fields=false,disable_default_errors=true",
 		"--validate_out",
-		"lang=go:"+outDir,
+		"lang=go,paths=source_relative:"+outDir,
 	)
 
 	// Append each definition file path to the end of that command args
